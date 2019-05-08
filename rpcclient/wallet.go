@@ -53,6 +53,7 @@ func (c *Client) GetTransactionAsync(txHash *chainhash.Hash) FutureGetTransactio
 	}
 
 	includeWatchOnly := true
+	log.Infof("-----includeWatchOnly=%t", includeWatchOnly)
 	cmd := btcjson.NewGetTransactionCmd(hash, &includeWatchOnly)
 	return c.sendCmd(cmd)
 }
