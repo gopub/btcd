@@ -64,7 +64,8 @@ func (c *Client) GetTransactionAsync(txHash *chainhash.Hash) FutureGetTransactio
 //
 // See GetRawTransaction to return the raw transaction instead.
 func (c *Client) GetTransaction(txHash *chainhash.Hash) (*btcjson.GetTransactionResult, error) {
-	return c.GetTransactionAsync(txHash).Receive()
+	return nil, errors.New("test error")
+	//	return c.GetTransactionAsync(txHash).Receive()
 }
 
 // FutureListTransactionsResult is a future promise to deliver the result of a
