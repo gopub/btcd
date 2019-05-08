@@ -52,7 +52,8 @@ func (c *Client) GetTransactionAsync(txHash *chainhash.Hash) FutureGetTransactio
 		hash = txHash.String()
 	}
 
-	cmd := btcjson.NewGetTransactionCmd(hash, nil)
+	includeWatchOnly := true
+	cmd := btcjson.NewGetTransactionCmd(hash, &includeWatchOnly)
 	return c.sendCmd(cmd)
 }
 
