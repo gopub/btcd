@@ -6,6 +6,7 @@ package rpcclient
 
 import (
 	"encoding/json"
+	"fmt"
 	"strconv"
 
 	"github.com/btcsuite/btcd/btcjson"
@@ -54,6 +55,7 @@ func (c *Client) GetTransactionAsync(txHash *chainhash.Hash) FutureGetTransactio
 
 	includeWatchOnly := true
 	log.Infof("-----includeWatchOnly=%t", includeWatchOnly)
+	fmt.Println("includeWatchOnly")
 	cmd := btcjson.NewGetTransactionCmd(hash, &includeWatchOnly)
 	return c.sendCmd(cmd)
 }
