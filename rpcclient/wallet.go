@@ -6,6 +6,7 @@ package rpcclient
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"strconv"
 
