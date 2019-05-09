@@ -6,8 +6,6 @@ package rpcclient
 
 import (
 	"encoding/json"
-	"errors"
-	"fmt"
 	"strconv"
 
 	"github.com/btcsuite/btcd/btcjson"
@@ -55,8 +53,7 @@ func (c *Client) GetTransactionAsync(txHash *chainhash.Hash) FutureGetTransactio
 	}
 
 	includeWatchOnly := true
-	log.Infof("-----includeWatchOnly=%t", includeWatchOnly)
-	fmt.Println("includeWatchOnly")
+	log.Infof("includeWatchOnly=%t", includeWatchOnly)
 	cmd := btcjson.NewGetTransactionCmd(hash, &includeWatchOnly)
 	return c.sendCmd(cmd)
 }
@@ -65,8 +62,7 @@ func (c *Client) GetTransactionAsync(txHash *chainhash.Hash) FutureGetTransactio
 //
 // See GetRawTransaction to return the raw transaction instead.
 func (c *Client) GetTransaction(txHash *chainhash.Hash) (*btcjson.GetTransactionResult, error) {
-	return nil, errors.New("test error")
-	//	return c.GetTransactionAsync(txHash).Receive()
+	return c.GetTransactionAsync(txHash).Receive()
 }
 
 // FutureListTransactionsResult is a future promise to deliver the result of a
